@@ -1,0 +1,17 @@
+- name: repository
+  gather_facts: false
+  hosts: database
+  tasks:
+    - name: yum
+      yum_repository:
+        name: "{{ item }}Repo"
+        description: MySQL 8.0 YUM Repo
+        baseurl: http://repo/{{ item }}
+        enabled: yes
+        file: mysql 
+      loop:
+        - BaseOS
+        - AppStream
+      become: true
+      tags:
+        - yum

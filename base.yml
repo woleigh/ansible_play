@@ -1,0 +1,6 @@
+- name: 
+  gather_facts: false
+  hosts: all
+  tasks:
+    - name: 
+      

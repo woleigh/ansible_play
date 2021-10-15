@@ -1,0 +1,12 @@
+- name: tasks
+  gather_facts: false
+  hosts: all
+  tasks:
+    - name: cron
+      cron:
+        user: root
+        job: date >> /var/log/time.log
+        special_time: hourly
+      become: true
+      when: "'proxy' in group_names"
+      

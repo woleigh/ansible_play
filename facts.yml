@@ -1,0 +1,21 @@
+- name: facts 
+  gather_facts: false
+  hosts: database
+  tasks:
+    - name: file
+      file:
+        path: /etc/ansible/facts.d
+        state: directory
+      become: true
+      tags:
+        - file
+    - name: copy
+      copy:
+        content: |
+          [sample_exam]
+          server_role: mysql
+        dest: /etc/ansible/facts.d/custom.fact
+      become: true
+      tags:
+        - copy
+      

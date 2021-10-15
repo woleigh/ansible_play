@@ -1,0 +1,21 @@
+- name: archive
+  gather_facts: false
+  hosts: database
+  tasks:
+    - name: copy
+      copy:
+        content: "dev,test,qa,prod"
+        dest: /mnt/mysql_backups/database_list.txt
+      become: true
+      tags:
+        - copy
+    - name: archive
+      archive:
+        path: /mnt/mysql_backups/database_list.txt
+        dest: /mnt/mysql_backups/archive.gz
+        force_archive: true
+        format: gz
+      become: true
+      tags:
+        - archive
+      
