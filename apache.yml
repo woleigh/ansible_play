@@ -1,8 +1,0 @@
-- name: apache
-  gather_facts: true
-  hosts: database
-  tasks:
-    - name: role
-      import_role:
-        name: sample-apache
-      
