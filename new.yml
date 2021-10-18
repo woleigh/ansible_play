@@ -1,0 +1,10 @@
+- name: debug
+  gather_facts: false
+  hosts: all
+  vars:
+  tasks:
+    - name: debug 
+      debug:
+        msg: First Line {{ first_line }} Second Line {{ second_line }}
+
+      
