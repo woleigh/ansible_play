@@ -1,0 +1,13 @@
+- name: sshd
+  gather_facts: false
+  hosts: all
+  tasks:
+    - name: block
+      blockinfile:
+        block: |
+          banner /etc/motd
+          X11Forwarding no
+          MaxAuthTries 3
+        path: /etc/ssh/sshd_config
+      become: true
+      

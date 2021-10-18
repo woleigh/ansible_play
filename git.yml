@@ -1,0 +1,13 @@
+- name: git 
+  gather_facts: false
+  hosts: localhost
+  tasks:
+    - name: git
+      git:
+        repo: git@github.com:woleigh/ansible_plays.git
+        dest: /home/automation/plays/play4
+        version: projecttwo
+        clone: no
+
+
+      

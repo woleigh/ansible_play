@@ -1,0 +1,14 @@
+- name: test
+  gather_facts: true
+  hosts: webservers
+  tasks:
+    - name: setup
+      setup:
+      delegate_to: "{{ item }}"
+      delegate_facts: true
+      loop: "{{ groups['database'] }}"
+    - name:
+      debug:
+        msg: "{{ hostvars['node4']['ansible_fqdn'] }}"
+
+      

@@ -1,0 +1,19 @@
+- name: selinux
+  gather_facts: false
+  hosts: webservers
+  tasks:
+    - name: selinux
+      import_role:
+        name: rhel-system-roles.selinux
+      vars:
+        selinux_booleans:
+          - name: 'httpd_can_network_connect'
+            state: on
+            persistent: yes
+      become: yes
+      ignore_errors: yes
+      tags:
+        - selinux
+        
+
+      

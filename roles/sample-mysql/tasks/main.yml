@@ -1,0 +1,76 @@
+---
+# tasks file for roles/sample-mysql
+- name: parted
+  parted:
+    device: /dev/sdb
+    number: 1
+    part_end: 800MB
+    state: present
+  become: true
+  tags:
+    - parted
+- name: lvg
+  lvg:
+    vg: vg_database
+    pvs: /dev/sdb1
+  become: true
+  tags:
+    - lvg
+- name: lvol
+  lvol:
+    lv: lv_mysql
+    vg: vg_database
+    size: 512M
+  become: true
+  tags:
+    - lvol
+- name: fs
+  filesystem:
+    fstype: xfs
+    dev: /dev/vg_database/lv_mysql
+  become: true
+  tags:
+    - fs
+- name: file
+  file:
+    path: /mnt/mysql_backups
+    state: directory
+  become: true
+  tags:
+    - file
+
+- name: mount
+  mount:
+    src: /dev/vg_database/lv_mysql
+    path: /mnt/mysql_backups
+    state: mounted
+    fstype: xfs
+  become: true
+  tags:
+    - mount
+- name: yum
+  yum:
+    name: mysql
+    state: installed
+  become: true
+  tags:
+    - mysql
+- name: firewalld
+  firewalld:
+    port: 3306/tcp
+    immediate: yes
+    permanent: yes
+    state: enabled
+  become: true
+  tags:
+    - firewalld
+- name: service
+  service:
+    name: mysql
+    state: started
+    enabled: true
+  become: true
+  tags:
+    - service
+
+

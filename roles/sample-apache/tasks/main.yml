@@ -1,0 +1,41 @@
+---
+# tasks file for roles/sample-apache
+- name: yum
+  yum:
+    name:
+      - httpd
+      - mod_ssl
+      - php
+    state: installed
+  become: true
+  tags:
+    - yum
+- name: service
+  service:
+    name: httpd
+    state: started
+    enabled: true
+  become: true
+  tags:
+    - service
+- name: firewalld
+  firewalld:
+    service: "{{ item }}"
+    immediate: yes
+    permanent: yes
+    state: enabled
+  become: true
+  loop:
+    - http
+    - https
+  tags:
+    - firewalld
+- name: template
+  template: 
+    src: index.html.j2 
+    dest: /var/www/html/index.html
+  tags:
+    - template
+  become: true
+  notify: restart apache
+

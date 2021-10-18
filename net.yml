@@ -1,0 +1,10 @@
+- name: ipaddr 
+  gather_facts: false
+  hosts: 127.0.0.1
+  tasks:
+    - name: ipaddr
+      debug:
+        msg: "{{ test_list|ipaddr('subnet') }}"
+      vars:
+        test_list: ['192.24.2.1', 'host.fqdn', '::1', '192.168.32.0/24', 'fe80::100/10', True, '', '42540766412265424405338506004571095040/64']
+      

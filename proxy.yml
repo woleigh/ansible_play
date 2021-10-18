@@ -1,0 +1,9 @@
+- name: proxy 
+  gather_facts: true
+  hosts: proxy
+  tasks:
+    - name: role
+      import_role:
+        name: geerlingguy.haproxy
+      become: true
+      

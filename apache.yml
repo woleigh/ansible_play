@@ -1,0 +1,8 @@
+- name: apache
+  gather_facts: true
+  hosts: webservers
+  tasks:
+    - name: role
+      import_role:
+        name: sample-apache
+      
