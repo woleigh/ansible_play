@@ -1,10 +1,24 @@
     {
-    "dyngroup":{
+    "groupone":{
         "hosts":[
             "woleigh1.cloud.example.com",
-            "woleigh2.cloud.example.com",
+            "woleigh2.cloud.example.com"
+        ],
+        "vars":{
+            "var1": true
+        }
+    },
+     "grouptwo":{
+        "hosts":[
             "woleigh3.cloud.example.com",
-            "woleigh4.cloud.example.com",
+            "woleigh4.cloud.example.com"
+        ],
+        "vars":{
+            "var1": true
+        }
+    },
+      "groupthree":{
+        "hosts":[
             "woleigh5.cloud.example.com"
         ],
         "vars":{
