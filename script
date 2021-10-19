@@ -1,9 +1,9 @@
     "dyngroup":{
         "hosts":[
             "woleigh1.cloud.example.com",
-            "woleigh2.cloud.example.com"
-            "woleigh3.cloud.example.com"
-            "woleigh4.cloud.example.com"
+            "woleigh2.cloud.example.com",
+            "woleigh3.cloud.example.com",
+            "woleigh4.cloud.example.com",
             "woleigh5.cloud.example.com"
         ],
         "vars":{
