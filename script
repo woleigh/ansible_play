@@ -13,11 +13,11 @@
     },
     "_meta":{
         "hostvars":{
-            "cloud1.cloud.example.com":{
-                "type":"web"
+            "woleigh1.cloud.example.com":{
+                "ansible_host":"10.10.10.10"
             },
-            "cloud2.cloud.example.com":{
-                "type":"database"
+            "woleigh2.cloud.example.com":{
+                "ansible_host":"10.10.10.11"
             }
         }
     }
