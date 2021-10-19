@@ -18,6 +18,15 @@
             },
             "woleigh2.cloud.example.com":{
                 "ansible_host":"10.10.10.11"
+            },
+            "woleigh3.cloud.example.com":{
+                "ansible_host":"10.10.10.12"
+            },
+            "woleigh4.cloud.example.com":{
+                "ansible_host":"10.10.10.13"
+            },
+            "woleigh5.cloud.example.com":{
+                "ansible_host":"10.10.10.14"
             }
         }
     }
