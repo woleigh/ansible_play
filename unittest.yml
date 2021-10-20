@@ -5,15 +5,16 @@
     statvar: ansible_facts['services']['httpd.service']['state']
   become: true
   tasks:
-    - name: Test httpd status
+    - name: Service facts
       service_facts:
-    - name:
+    - name: Register uri content
       uri:
         url: http://localhost
         return_content: yes
       register: result
 
-    - assert:
+    - name: Test result of curl and status of httpd service
+      assert:
         that: 
           - "{{ statvar }} is match ('running')"
           - result.content is search ('192.168.55.202')
